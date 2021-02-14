@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Algorithm Showcase</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="shortcut icon" href="assets/website_icon.svg" type="image/x-icon">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="navbar.css">
+</head>
+<style>
+  * {
+    font-family: 'Montserrat', sans-serif;
+  }
+</style>
+<body class="m-0 box-border font-serif bg-gray-200">
+  <nav class="bg-white noselect">
+    <div class="md:flex md:flex-row md:justify-between md:items-center">
+      <div class="flex items-center justify-between">
+        <div id="logo">
+          <a href="https://hizude.github.io/algoritmenInf">
+            <svg class="w-16 h-16 ml-6 mt-0.5" viewBox="0 0 93 92" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M69.75 12.95C72.2165 12.95 74.582 13.9298 76.3261 15.6739C78.0702 17.418 79.05 19.7835 79.05 22.25V68.75C79.05 71.2165 78.0702 73.582 76.3261 75.3261C74.582 77.0702 72.2165 78.05 69.75 78.05C67.2835 78.05 64.918 77.0702 63.1739 75.3261C61.4298 73.582 60.45 71.2165 60.45 68.75V22.25C60.45 19.7835 61.4298 17.418 63.1739 15.6739C64.918 13.9298 67.2835 12.95 69.75 12.95Z"
+                fill="#1CB2E1" />
+              <path
+                d="M46.5 26.9C48.9665 26.9 51.332 27.8798 53.0761 29.6239C54.8202 31.368 55.8 33.7335 55.8 36.2V68.75C55.8 71.2165 54.8202 73.582 53.0761 75.3261C51.332 77.0702 48.9665 78.05 46.5 78.05C44.0335 78.05 41.668 77.0702 39.9239 75.3261C38.1798 73.582 37.2 71.2165 37.2 68.75V36.2C37.2 33.7335 38.1798 31.368 39.9239 29.6239C41.668 27.8798 44.0335 26.9 46.5 26.9Z"
+                fill="#E1CE1C" />
+              <path
+                d="M23.25 40.85C25.7165 40.85 28.082 41.8298 29.8261 43.5739C31.5702 45.318 32.55 47.6835 32.55 50.15V68.75C32.55 71.2165 31.5702 73.582 29.8261 75.3261C28.082 77.0702 25.7165 78.05 23.25 78.05C20.7835 78.05 18.418 77.0702 16.6739 75.3261C14.9298 73.582 13.95 71.2165 13.95 68.75V50.15C13.95 47.6835 14.9298 45.318 16.6739 43.5739C18.418 41.8298 20.7835 40.85 23.25 40.85Z"
+                fill="#E11C1C" />
+            </svg>
+          </a>
+        </div>
+        <div id="burger" class="cursor-pointer md:hidden">
+          <svg class="mr-6" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="3em" height="3em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 512 512"><path fill="black" d="M80 96h352v32H80z"/><path fill="black" d="M80 240h352v32H80z"/><path fill="black" d="M80 384h352v32H80z"/></svg>
+        </div>
+      </div>
+      <ul id="menu" class="flex flex-wrap justify-center mt-4 ml-4 md:flex md:flex-row md:flex-nowrap md:mt-0 md:ml-0">
+        <li class="mx-2"><button class="focus:outline-none border border-black w-40 my-2 px-2 py-1 text-base md:w-40 md:px-4 md:py-1 md:my-0 rounded-full lg:text-lg hover:bg-indigo-700 focus:bg-indigo-700 hover:border-indigo-700 hover:text-white focus:text-white transition-colors duration-100" type="button">Quick Sort</button></li>
+        <li class="mx-2"><button class="focus:outline-none border border-black w-40 my-2 px-2 py-1 text-base md:w-40 md:px-4 md:py-1 md:my-0 rounded-full lg:text-lg hover:bg-indigo-700 focus:bg-indigo-700 hover:border-indigo-700 hover:text-white focus:text-white transition-colors duration-100" type="button">Insertion Sort</button></li>
+        <li class="mx-2"><button class="focus:outline-none border border-black w-40 my-2 px-2 py-1 text-base md:w-40 md:px-4 md:py-1 md:my-0 rounded-full lg:text-lg hover:bg-indigo-700 focus:bg-indigo-700 hover:border-indigo-700 hover:text-white focus:text-white transition-colors duration-100" type="button">Selection Sort</button></li>
+        <li class="mx-2"><button class="focus:outline-none border border-black w-40 my-2 px-2 py-1 text-base md:w-40 md:px-4 md:py-1 md:my-0 rounded-full lg:text-lg hover:bg-indigo-700 focus:bg-indigo-700 hover:border-indigo-700 hover:text-white focus:text-white transition-colors duration-100" type="button">Bubble Sort</button></li>
+      </ul>
+      <div id="more_options" class="cursor-pointer hidden md:block">
+        <svg class="w-12 h-12 mr-6" viewBox="0 0 63 63" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M20.6719 31.5C20.6719 32.8054 20.1533 34.0573 19.2303 34.9803C18.3073 35.9033 17.0554 36.4219 15.75 36.4219C14.4446 36.4219 13.1927 35.9033 12.2697 34.9803C11.3467 34.0573 10.8281 32.8054 10.8281 31.5C10.8281 30.1946 11.3467 28.9427 12.2697 28.0197C13.1927 27.0967 14.4446 26.5781 15.75 26.5781C17.0554 26.5781 18.3073 27.0967 19.2303 28.0197C20.1533 28.9427 20.6719 30.1946 20.6719 31.5Z"
+            fill="black" />
+          <path
+            d="M36.4219 31.5C36.4219 32.8054 35.9033 34.0573 34.9803 34.9803C34.0573 35.9033 32.8054 36.4219 31.5 36.4219C30.1946 36.4219 28.9427 35.9033 28.0197 34.9803C27.0967 34.0573 26.5781 32.8054 26.5781 31.5C26.5781 30.1946 27.0967 28.9427 28.0197 28.0197C28.9427 27.0967 30.1946 26.5781 31.5 26.5781C32.8054 26.5781 34.0573 27.0967 34.9803 28.0197C35.9033 28.9427 36.4219 30.1946 36.4219 31.5Z"
+            fill="black" />
+          <path
+            d="M47.25 36.4219C48.5554 36.4219 49.8073 35.9033 50.7303 34.9803C51.6533 34.0573 52.1719 32.8054 52.1719 31.5C52.1719 30.1946 51.6533 28.9427 50.7303 28.0197C49.8073 27.0967 48.5554 26.5781 47.25 26.5781C45.9446 26.5781 44.6927 27.0967 43.7697 28.0197C42.8467 28.9427 42.3281 30.1946 42.3281 31.5C42.3281 32.8054 42.8467 34.0573 43.7697 34.9803C44.6927 35.9033 45.9446 36.4219 47.25 36.4219Z"
+            fill="black" />
+        </svg>
+      </div>
+    </div>
+    <div id="more_options_menu" class="flex items-center flex-wrap justify-center pb-6 mt-6 hidden">
+      <label for="range_array_length">Array length:</label>
+      <input type="range" name="range_array_length" id="range_arrlen" min="5" max="100" class="mx-4">
+      <label for="range_array_length">Max size:</label>
+      <input type="range" name="range_array_length" id="range_arrlen" min="5" max="100" class="mx-4">
+    </div>
+  </nav>
+  <main class="">
+   <div class="arr_container bg-gray-400 flex justify-center border-b-2 border-black mt-32 w-11/12 mx-auto">
+    <div class="w-12 h-64 mx-1 bg-blue-700"></div>
+    <div class="w-12 h-64 mx-1 bg-blue-700"></div>
+    <div class="w-12 h-64 mx-1 bg-blue-700"></div>
+    <div class="w-12 h-64 mx-1 bg-blue-700"></div>
+    <div class="w-12 h-64 mx-1 bg-blue-700"></div>
+    <div class="w-12 h-64 mx-1 bg-blue-700"></div>
+    <div class="w-12 h-64 mx-1 bg-blue-700"></div>
+    <div class="w-12 h-64 mx-1 bg-blue-700"></div>
+    <div class="w-12 h-64 mx-1 bg-blue-700"></div>
+    <div class="w-12 h-64 mx-1 bg-blue-700"></div>
+    <div class="w-12 h-64 mx-1 bg-blue-700"></div>
+    <div class="w-12 h-64 mx-1 bg-blue-700"></div>
+    <div class="w-12 h-64 mx-1 bg-blue-700"></div>
+    <div class="w-12 h-64 mx-1 bg-blue-700"></div>
+    <div class="w-12 h-64 mx-1 bg-blue-700"></div>
+    <div class="w-12 h-64 mx-1 bg-blue-700"></div>
+    <div class="w-12 h-64 mx-1 bg-blue-700"></div>
+    <div class="w-12 h-64 mx-1 bg-blue-700"></div>
+    <div class="w-12 h-64 mx-1 bg-blue-700"></div>
+    <div class="w-12 h-64 mx-1 bg-blue-700"></div>
+    <div class="w-12 h-64 mx-1 bg-blue-700"></div>
+    <div class="w-12 h-64 mx-1 bg-blue-700"></div>
+    <div class="w-12 h-64 mx-1 bg-blue-700"></div>
+    <div class="w-12 h-64 mx-1 bg-blue-700"></div>
+    <div class="w-12 h-64 mx-1 bg-blue-700"></div>
+    <div class="w-12 h-64 mx-1 bg-blue-700"></div>
+    <div class="w-12 h-64 mx-1 bg-blue-700"></div>
+    <div class="w-12 h-64 mx-1 bg-blue-700"></div>
+   </div>
+   <div class="controls">
+     <!-- buttons -->
+   </div>
+  </main>
+  <script src="navbar.js"></script>
+  <script src="algorithms.js"></script>
+</body>
+</html>
