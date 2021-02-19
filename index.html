@@ -66,8 +66,8 @@
       <input type="range" name="range_array_length" id="range_arrlen" min="5" max="100" class="mx-4">
     </div>
   </nav>
-  <main class="">
-   <div class="arr_container bg-gray-400 flex justify-center border-b-2 border-black mt-32 w-11/12 mx-auto">
+  <main>
+   <div class="arr_container flex justify-center border-b border-black mt-32 w-11/12 mx-auto">
     <div class="w-12 h-64 mx-1 bg-blue-700"></div>
     <div class="w-12 h-64 mx-1 bg-blue-700"></div>
     <div class="w-12 h-64 mx-1 bg-blue-700"></div>
@@ -98,7 +98,15 @@
     <div class="w-12 h-64 mx-1 bg-blue-700"></div>
    </div>
    <div class="controls">
-     <!-- buttons -->
+    <div role="buttons" class="mt-32">
+      <div class="top flex justify-center">
+        <button class="px-6 py-2 mx-4 my-2 bg-blue-500 text-white text-lg rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 ring-blue-300 ring-offset-1">Start</button>
+        <button class="px-6 py-2 mx-4 my-2 bg-red-500 text-white text-lg rounded-md hover:bg-red-600 focus:outline-none focus:ring-2 ring-red-300 ring-offset-1">Reset</button>
+      </div>
+      <div class="bottom flex justify-center mt-2">
+        <button class="px-6 py-2 mx-4 my-2 bg-indigo-500 text-white text-lg rounded-md hover:bg-indigo-600 focus:outline-none focus:ring-2 ring-indigo-300 ring-offset-1">New Array</button>
+      </div>
+    </div>
    </div>
   </main>
   <script src="navbar.js"></script>
