@@ -21,7 +21,7 @@
     <div class="md:flex md:flex-row md:justify-between md:items-center">
       <div class="flex items-center justify-between">
         <div id="logo">
-          <a href="https://hizude.github.io/algoritmenInf">
+          <a role="banner" href="https://hizude.github.io/algoritmenInf">
             <svg class="w-16 h-16 ml-6 mt-0.5" viewBox="0 0 93 92" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
                 d="M69.75 12.95C72.2165 12.95 74.582 13.9298 76.3261 15.6739C78.0702 17.418 79.05 19.7835 79.05 22.25V68.75C79.05 71.2165 78.0702 73.582 76.3261 75.3261C74.582 77.0702 72.2165 78.05 69.75 78.05C67.2835 78.05 64.918 77.0702 63.1739 75.3261C61.4298 73.582 60.45 71.2165 60.45 68.75V22.25C60.45 19.7835 61.4298 17.418 63.1739 15.6739C64.918 13.9298 67.2835 12.95 69.75 12.95Z"
@@ -61,55 +61,27 @@
     </div>
     <div id="more_options_menu" class="flex items-center flex-wrap justify-center pb-6 mt-6 hidden">
       <label for="range_array_length">Array length:</label>
-      <input type="range" name="range_array_length" id="range_arrlen" min="5" max="100" class="mx-4">
-      <label for="range_array_length">Max size:</label>
-      <input type="range" name="range_array_length" id="range_arrlen" min="5" max="100" class="mx-4">
+      <input type="range" name="range_array_length" id="range_arrlen" min="5" max="100" value="100" class="mx-4">
     </div>
   </nav>
   <main>
-   <div class="arr_container flex justify-center border-b border-black mt-32 w-11/12 mx-auto">
-    <div class="w-12 h-64 mx-1 bg-blue-700"></div>
-    <div class="w-12 h-64 mx-1 bg-blue-700"></div>
-    <div class="w-12 h-64 mx-1 bg-blue-700"></div>
-    <div class="w-12 h-64 mx-1 bg-blue-700"></div>
-    <div class="w-12 h-64 mx-1 bg-blue-700"></div>
-    <div class="w-12 h-64 mx-1 bg-blue-700"></div>
-    <div class="w-12 h-64 mx-1 bg-blue-700"></div>
-    <div class="w-12 h-64 mx-1 bg-blue-700"></div>
-    <div class="w-12 h-64 mx-1 bg-blue-700"></div>
-    <div class="w-12 h-64 mx-1 bg-blue-700"></div>
-    <div class="w-12 h-64 mx-1 bg-blue-700"></div>
-    <div class="w-12 h-64 mx-1 bg-blue-700"></div>
-    <div class="w-12 h-64 mx-1 bg-blue-700"></div>
-    <div class="w-12 h-64 mx-1 bg-blue-700"></div>
-    <div class="w-12 h-64 mx-1 bg-blue-700"></div>
-    <div class="w-12 h-64 mx-1 bg-blue-700"></div>
-    <div class="w-12 h-64 mx-1 bg-blue-700"></div>
-    <div class="w-12 h-64 mx-1 bg-blue-700"></div>
-    <div class="w-12 h-64 mx-1 bg-blue-700"></div>
-    <div class="w-12 h-64 mx-1 bg-blue-700"></div>
-    <div class="w-12 h-64 mx-1 bg-blue-700"></div>
-    <div class="w-12 h-64 mx-1 bg-blue-700"></div>
-    <div class="w-12 h-64 mx-1 bg-blue-700"></div>
-    <div class="w-12 h-64 mx-1 bg-blue-700"></div>
-    <div class="w-12 h-64 mx-1 bg-blue-700"></div>
-    <div class="w-12 h-64 mx-1 bg-blue-700"></div>
-    <div class="w-12 h-64 mx-1 bg-blue-700"></div>
-    <div class="w-12 h-64 mx-1 bg-blue-700"></div>
+   <div id="canvas" class="flex mt-12 justify-center w-9/12 items-end mx-auto" style="height: 520px;">
+    <!-- ^ add bg-gray-300, border-b (black) when testing -->
    </div>
    <div class="controls">
-    <div role="buttons" class="mt-32">
+    <div class="mt-16">
       <div class="top flex justify-center">
-        <button class="px-6 py-2 mx-4 my-2 bg-blue-500 text-white text-lg rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 ring-blue-300 ring-offset-1">Start</button>
-        <button class="px-6 py-2 mx-4 my-2 bg-red-500 text-white text-lg rounded-md hover:bg-red-600 focus:outline-none focus:ring-2 ring-red-300 ring-offset-1">Reset</button>
+        <button id="startBtn" class="px-6 py-2 mx-4 my-2 bg-blue-600 text-white text-lg rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 ring-blue-300 ring-offset-1">Start</button>
+        <button id="resetBtn" class="px-6 py-2 mx-4 my-2 bg-red-600 text-white text-lg rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 ring-red-300 ring-offset-1">Reset</button>
       </div>
       <div class="bottom flex justify-center mt-2">
-        <button class="px-6 py-2 mx-4 my-2 bg-indigo-500 text-white text-lg rounded-md hover:bg-indigo-600 focus:outline-none focus:ring-2 ring-indigo-300 ring-offset-1">New Array</button>
+        <button id="newArrBtn" class="px-6 py-2 mx-4 my-2 bg-indigo-600 text-white text-lg rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 ring-indigo-300 ring-offset-1">New Array</button>
       </div>
     </div>
    </div>
   </main>
   <script src="navbar.js"></script>
+  <script src="index.js"></script>
   <script src="algorithms.js"></script>
 </body>
 </html>
