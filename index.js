@@ -1,12 +1,18 @@
 const startBtn = document.querySelector('#startBtn');
-const resetBtn = document.querySelector('#resetBtn');
+const pauseBtn = document.querySelector('#resetBtn');
 const newArrBtn = document.querySelector('#newArrBtn');
 const lenRange = document.querySelector('#range_arrlen');
 const canvas = document.querySelector('#canvas');
-let len = 100;
+let len = 20;
+let speed = 10;
 let generatedArray = [];
 let generatedArrayDivs = [];
 generateArray(len);
+update_delay = 0;
+
+pauseBtn.addEventListener('click', () => {
+  alert('not working')
+})
 
 function getRandomInt(max) {
   return Math.floor(Math.random() * Math.floor(max));
@@ -49,39 +55,65 @@ startBtn.addEventListener("click", () => {
 })
 
 // SORTING ALGORITHMS
-// arr = [2, 5, 3, 62, 4, 88, 42, 68, 24, 44, 54, 11, 12, 51, 41, 84, 10, 32, 14, 51, 35, 62, 62, 21, 21, 74, 34, 32, 13, 57, 88, 53, 33, 4, 68, 1, 5, 77, 3, 78, 23, 24];
-
-// function bubbleSort(arr) {
+// function bubbleSort(arr, arrDivs) {
 //   let len = arr.length;
+//   let nCompleted = 0;
 //   for (let i = 0; i < len; i++) {
-//       for (let j = 0; j < len; j++) {
-//           if (arr[j] > arr[j + 1]) {
-//               let tmp = arr[j];
-//               arr[j] = arr[j + 1];
-//               arr[j + 1] = tmp;
-//           }
+//     for (let j = 0; j < len; j++) {
+//       if (arr[j] > arr[j + 1]){
+//         let temp = arr[j];
+//         arr[j] = arr[j + 1];
+//         arr[j + 1] = temp;
+//         let tempDiv = arrDivs[j].style.height;
+//         arrDivs[j].style.height = arrDivs[j + 1].style.height;
+//         arrDivs[j + 1].style.height = tempDiv;
 //       }
-//   }
+//     }
+//     nCompleted = nCompleted + 1;
+//     arrDivs[len-nCompleted].style.backgroundColor = 'green';
+//   } 
 //   return arr;
-// };
+//   };
 
+// below: make animation with timer
 
-function bubbleSort(arr, arrDivs) {
+  function bubbleSort(arr, arrDivs) {
   let len = arr.length;
   for (let i = 0; i < len; i++) {
     for (let j = 0; j < len; j++) {
+      setTimeout(function(){
+        arrDivs[j].style.backgroundColor = 'yellow';
+      }, update_delay+=speed)
       if (arr[j] > arr[j + 1]){
+        setTimeout(function(){
+          arrDivs[j].style.backgroundColor = 'red';
+          arrDivs[j+1].style.backgroundColor = 'red';
+        }, update_delay+=speed)
         let temp = arr[j];
         arr[j] = arr[j + 1];
         arr[j + 1] = temp;
-        let temp2 = arrDivs[j].style.height;
-        arrDivs[j].style.height = arrDivs[j + 1].style.height;
-        arrDivs[j + 1].style.height = temp2;
+        updateHeight(arrDivs[j], arrDivs[j+1]);
       }
+      setTimeout(function(){
+        arrDivs[j].style.backgroundColor = 'blue';
+      }, update_delay+=speed);
     }
-  }
+  } 
   return arr;
   };
 
-// on init, get element one and two, and swap heights. VVV
-// 
+// function updateHeight(div1, div2){
+//   setTimeout(function(){
+//     let tempDiv = div1.style.height;
+//     div1.style.height = div2.style.height;
+//     div2.style.height = tempDiv;
+//   }, update_delay+=speed);
+// }
+
+function updateHeight(div1, div2){
+  setTimeout(function(){
+    let tempDiv = div1.style.height;
+    div1.style.height = div2.style.height;
+    div2.style.height = tempDiv;
+  }, update_delay+=speed);
+}
