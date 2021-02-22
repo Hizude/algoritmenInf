@@ -1,18 +1,19 @@
+const quickSortBtn = document.querySelector('#quickSort');
+const insertionSortBtn = document.querySelector('#insertionSort');
+const selectionSortBtn = document.querySelector('#selectionSort');
+const bubbleSortBtn = document.querySelector('#bubbleSort');
 const startBtn = document.querySelector('#startBtn');
 const pauseBtn = document.querySelector('#resetBtn');
 const newArrBtn = document.querySelector('#newArrBtn');
 const lenRange = document.querySelector('#range_arrlen');
 const canvas = document.querySelector('#canvas');
-let len = 20;
+let len = 100;
 let speed = 10;
 let generatedArray = [];
 let generatedArrayDivs = [];
 generateArray(len);
 update_delay = 0;
 
-pauseBtn.addEventListener('click', () => {
-  alert('not working')
-})
 
 function getRandomInt(max) {
   return Math.floor(Math.random() * Math.floor(max));
@@ -46,74 +47,84 @@ lenRange.addEventListener('input', (e) => {
   reset();
 })
 
+
+selectionSortBtn.addEventListener('click', () => {
+  selectionSort(generatedArray, generatedArrayDivs);
+})
+
+bubbleSortBtn.addEventListener('click', () => {
+  bubbleSort(generatedArray, generatedArrayDivs);
+})
+
+startBtn.addEventListener("click", () => {
+  
+})
+
+pauseBtn.addEventListener('click', () => {
+  
+})
+
 newArrBtn.addEventListener('click', () => {
   reset();
 })
 
-startBtn.addEventListener("click", () => {
-  bubbleSort(generatedArray, generatedArrayDivs);
-})
 
 // SORTING ALGORITHMS
-// function bubbleSort(arr, arrDivs) {
-//   let len = arr.length;
-//   let nCompleted = 0;
-//   for (let i = 0; i < len; i++) {
-//     for (let j = 0; j < len; j++) {
-//       if (arr[j] > arr[j + 1]){
-//         let temp = arr[j];
-//         arr[j] = arr[j + 1];
-//         arr[j + 1] = temp;
-//         let tempDiv = arrDivs[j].style.height;
-//         arrDivs[j].style.height = arrDivs[j + 1].style.height;
-//         arrDivs[j + 1].style.height = tempDiv;
-//       }
-//     }
-//     nCompleted = nCompleted + 1;
-//     arrDivs[len-nCompleted].style.backgroundColor = 'green';
-//   } 
-//   return arr;
-//   };
-
-// below: make animation with timer
-
-  function bubbleSort(arr, arrDivs) {
-  let len = arr.length;
-  for (let i = 0; i < len; i++) {
-    for (let j = 0; j < len; j++) {
-      setTimeout(function(){
-        arrDivs[j].style.backgroundColor = 'yellow';
-      }, update_delay+=speed)
-      if (arr[j] > arr[j + 1]){
-        setTimeout(function(){
-          arrDivs[j].style.backgroundColor = 'red';
-          arrDivs[j+1].style.backgroundColor = 'red';
-        }, update_delay+=speed)
-        let temp = arr[j];
-        arr[j] = arr[j + 1];
-        arr[j + 1] = temp;
-        updateHeight(arrDivs[j], arrDivs[j+1]);
-      }
-      setTimeout(function(){
-        arrDivs[j].style.backgroundColor = 'blue';
-      }, update_delay+=speed);
-    }
-  } 
-  return arr;
-  };
-
-// function updateHeight(div1, div2){
-//   setTimeout(function(){
-//     let tempDiv = div1.style.height;
-//     div1.style.height = div2.style.height;
-//     div2.style.height = tempDiv;
-//   }, update_delay+=speed);
-// }
-
-function updateHeight(div1, div2){
+function swap(div1, div2){
   setTimeout(function(){
     let tempDiv = div1.style.height;
     div1.style.height = div2.style.height;
     div2.style.height = tempDiv;
   }, update_delay+=speed);
+}
+
+function updateColor(div, color){
+  setTimeout(function(){
+    div.style.backgroundColor = color;
+  }, update_delay+=speed);
+}
+
+function bubbleSort(arr, arrDivs) {
+  let len = arr.length;
+  let nSorted = 0;
+  for (let i = 0; i < len; i++) {
+    for (let j = 0; j < len-nSorted; j++) {
+      updateColor(arrDivs[j], 'yellow');
+      if (arr[j] > arr[j + 1]){
+        updateColor(arrDivs[j], 'red');
+        updateColor(arrDivs[j + 1], 'red');
+        let temp = arr[j];
+        arr[j] = arr[j + 1];
+        arr[j + 1] = temp;
+        swap(arrDivs[j], arrDivs[j+1]);
+      }
+      updateColor(arrDivs[j], 'blue');
+    }
+    nSorted++;
+    updateColor(arrDivs[len-nSorted], 'green');
+  } 
+  return arr;
+  };
+
+// -----------------
+function selectionSort(arr, arrDivs) { 
+  let len = arr.length;
+  let nSorted = 0;
+  for(let i = 0; i < len; i++) {
+      let min = i;
+      for(let j = i + 1; j < len; j++){
+        if(arr[j] < arr[min]) {
+          min=j; 
+        }
+      }
+      if (min != i) {
+        let temp = arr[i]; 
+        arr[i] = arr[min];
+        arr[min] = temp;   
+        swap(arrDivs[i], arrDivs[min]);
+      }
+      updateColor(arrDivs[nSorted], 'green')
+      nSorted++;
+  }
+  return arr;
 }
