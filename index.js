@@ -8,7 +8,7 @@ const newArrBtn = document.querySelector('#newArrBtn');
 const lenRange = document.querySelector('#range_arrlen');
 const canvas = document.querySelector('#canvas');
 let len = 100;
-let speed = 10;
+let speed = 1;
 let generatedArray = [];
 let generatedArrayDivs = [];
 generateArray(len);
@@ -111,12 +111,18 @@ function selectionSort(arr, arrDivs) {
   let len = arr.length;
   let nSorted = 0;
   for(let i = 0; i < len; i++) {
-      let min = i;
-      for(let j = i + 1; j < len; j++){
-        if(arr[j] < arr[min]) {
-          min=j; 
-        }
+    let min = i;
+    for(let j = 0 + nSorted; j < len; j++){
+      updateColor(arrDivs[j], 'yellow');
+      if(arr[j] < arr[min]) {
+        updateColor(arrDivs[min], 'blue');
+        min=j; 
+        updateColor(arrDivs[min], 'red');
       }
+      updateColor(arrDivs[j], 'blue');
+      updateColor(arrDivs[min], 'red');
+    }
+    updateColor(arrDivs[min], 'blue');
       if (min != i) {
         let temp = arr[i]; 
         arr[i] = arr[min];
