@@ -7,8 +7,8 @@ const pauseBtn = document.querySelector('#resetBtn');
 const newArrBtn = document.querySelector('#newArrBtn');
 const lenRange = document.querySelector('#range_arrlen');
 const canvas = document.querySelector('#canvas');
-let len = 100;
-let speed = 1;
+let len = 30;
+let speed = 10;
 let generatedArray = [];
 let generatedArrayDivs = [];
 generateArray(len);
@@ -47,6 +47,10 @@ lenRange.addEventListener('input', (e) => {
   reset();
 })
 
+
+insertionSortBtn.addEventListener('click', () => {
+  insertionSort(generatedArray, generatedArrayDivs);
+})
 
 selectionSortBtn.addEventListener('click', () => {
   selectionSort(generatedArray, generatedArrayDivs);
@@ -106,7 +110,6 @@ function bubbleSort(arr, arrDivs) {
   return arr;
   };
 
-// -----------------
 function selectionSort(arr, arrDivs) { 
   let len = arr.length;
   let nSorted = 0;
@@ -132,5 +135,27 @@ function selectionSort(arr, arrDivs) {
       updateColor(arrDivs[nSorted], 'green')
       nSorted++;
   }
+  return arr;
+}
+
+// now-------------------
+
+function insertionSort(arr, arrDivs) {
+  let len = arr.length;
+      for (let i = 1; i < len; i++) {
+          updateColor(arrDivs[i-1], 'green');
+          let current = arr[i];
+          updateColor(arrDivs[i], 'yellow');
+          let j = i-1; 
+          while ((j > -1) && (current < arr[j])) {
+            arr[j + 1] = arr[j];
+            updateColor(arrDivs[j], 'red');
+            swap(arrDivs[j + 1], arrDivs[j])
+            updateColor(arrDivs[j+1], 'green');
+            updateColor(arrDivs[j], 'green');
+            j--;
+          }
+          arr[j + 1] = current;
+      }
   return arr;
 }
