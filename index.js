@@ -8,7 +8,7 @@ const newArrBtn = document.querySelector('#newArrBtn');
 const lenRange = document.querySelector('#range_arrlen');
 const canvas = document.querySelector('#canvas');
 let len = 30;
-let speed = 20;
+let speed = 50;
 let generatedArray = [];
 let generatedArrayDivs = [];
 generateArray(len);
@@ -168,6 +168,7 @@ function insertionSort(arr, arrDivs) {
 
 function partition(arr, start, end, arrDivs){
   let pivot = arr[start];
+  // updateColor(arrDivs[start], 'yellow');
   let i = start;
   let j = end;
   while(i < j){
@@ -178,26 +179,33 @@ function partition(arr, start, end, arrDivs){
       j--
     } while(arr[j] > pivot)
     if (i < j){
+      updateColor(arrDivs[i], 'red');
+      updateColor(arrDivs[j], 'red');
       let temp = arr[i];
       arr[i] = arr[j];
       arr[j] = temp;
       swap(arrDivs[i], arrDivs[j]);
+      updateColor(arrDivs[i], 'blue');
+      updateColor(arrDivs[j], 'blue');
     }
   }
+  updateColor(arrDivs[start], 'red');
+  updateColor(arrDivs[j], 'red');
   let temp = arr[start];
   arr[start] = arr[j];
   arr[j] = temp;
   swap(arrDivs[start], arrDivs[j]);
-  return j
+  updateColor(arrDivs[start], 'blue');
+  updateColor(arrDivs[j], 'blue');
+  return j;
 }
 
 function quickSort(arr, start, end, arrDivs){
   if (start < end){
     let j = partition(arr, start, end, arrDivs);
+    updateColor(arrDivs[j], 'green');
     quickSort(arr, start, j, arrDivs);
     quickSort(arr, j+1, end, arrDivs);
   }
-  updateColor(arrDivs[start], 'green');
-  updateColor(arrDivs[end], 'green');
   return arr;
 }
