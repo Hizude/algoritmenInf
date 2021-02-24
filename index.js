@@ -3,17 +3,18 @@ const insertionSortBtn = document.querySelector('#insertionSort');
 const selectionSortBtn = document.querySelector('#selectionSort');
 const bubbleSortBtn = document.querySelector('#bubbleSort');
 const startBtn = document.querySelector('#startBtn');
-const pauseBtn = document.querySelector('#resetBtn');
+const placeholderBtn = document.querySelector('#placeholderBtn');
 const newArrBtn = document.querySelector('#newArrBtn');
 const lenRange = document.querySelector('#range_arrlen');
 const canvas = document.querySelector('#canvas');
+
+let selectedAlgo = '';
 let len = document.querySelector('#range_arrlen').value;
 let speed = 5;
 let generatedArray = [];
 let generatedArrayDivs = [];
 generateArray(len);
 update_delay = 0;
-
 
 function getRandomInt(max) {
   return Math.floor(Math.random() * Math.floor(max));
@@ -47,28 +48,52 @@ lenRange.addEventListener('input', (e) => {
   reset();
 })
 
-quickSortBtn.addEventListener('click', () => {
-  quickSort(generatedArray, generatedArrayDivs);
-})
-
-insertionSortBtn.addEventListener('click', () => {
-  insertionSort(generatedArray, generatedArrayDivs);
+bubbleSortBtn.addEventListener('click', () => {
+  selectedAlgo = '';
+  selectedAlgo += bubbleSortBtn.innerHTML;
 })
 
 selectionSortBtn.addEventListener('click', () => {
-  selectionSort(generatedArray, generatedArrayDivs);
+  selectedAlgo = '';
+  selectedAlgo += selectionSortBtn.innerHTML;
 })
 
-bubbleSortBtn.addEventListener('click', () => {
-  bubbleSort(generatedArray, generatedArrayDivs);
+insertionSortBtn.addEventListener('click', () => {
+  selectedAlgo = '';
+  selectedAlgo += insertionSortBtn.innerHTML;
+})
+
+quickSortBtn.addEventListener('click', () => {
+  selectedAlgo = '';
+  selectedAlgo += quickSortBtn.innerHTML;
 })
 
 startBtn.addEventListener("click", () => {
-  quickSort(generatedArray, 0, generatedArray.length, generatedArrayDivs)
+  switch(selectedAlgo){
+    case "Bubble Sort":
+      bubbleSort(generatedArray, generatedArrayDivs);
+      break;
+      
+    case "Selection Sort":
+      selectionSort(generatedArray, generatedArrayDivs);
+      break;
+      
+    case "Insertion Sort":
+      insertionSort(generatedArray, generatedArrayDivs);
+      break;
+      
+    case "Quick Sort":
+      quickSort(generatedArray, 0, generatedArray.length, generatedArrayDivs);
+      break;
+      
+    default:
+      // add tailwindcss popup
+      alert('No algorithm selected!');
+  }
 })
 
-pauseBtn.addEventListener('click', () => {
-  
+placeholderBtn.addEventListener('click', () => {
+  // 
 })
 
 newArrBtn.addEventListener('click', () => {
@@ -164,7 +189,15 @@ function insertionSort(arr, arrDivs) {
   return arr;
 }
 
-// now-------------------
+function quickSort(arr, start, end, arrDivs){
+  if (start < end){
+    let j = partition(arr, start, end, arrDivs);
+    updateColor(arrDivs[j], 'green');
+    quickSort(arr, start, j, arrDivs);
+    quickSort(arr, j+1, end, arrDivs);
+  }
+  return arr;
+}
 
 function partition(arr, start, end, arrDivs){
   let pivot = arr[start];
@@ -203,12 +236,5 @@ function partition(arr, start, end, arrDivs){
   return j;
 }
 
-function quickSort(arr, start, end, arrDivs){
-  if (start < end){
-    let j = partition(arr, start, end, arrDivs);
-    updateColor(arrDivs[j], 'green');
-    quickSort(arr, start, j, arrDivs);
-    quickSort(arr, j+1, end, arrDivs);
-  }
-  return arr;
-}
+// now-------------------
+

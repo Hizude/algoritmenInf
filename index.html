@@ -40,10 +40,10 @@
         </div>
       </div>
       <ul id="menu" class="flex flex-wrap justify-center mt-4 ml-4 md:flex md:flex-row md:flex-nowrap md:mt-0 md:ml-0">
-        <li class="mx-2"><button id="quickSort" class="focus:outline-none border border-black w-40 my-2 px-2 py-1 text-base md:w-40 md:px-4 md:py-1 md:my-0 rounded-full lg:text-lg hover:bg-indigo-700 focus:bg-indigo-700 hover:border-indigo-700 hover:text-white focus:text-white transition-colors duration-100" type="button">Quick Sort</button></li>
-        <li class="mx-2"><button id="insertionSort" class="focus:outline-none border border-black w-40 my-2 px-2 py-1 text-base md:w-40 md:px-4 md:py-1 md:my-0 rounded-full lg:text-lg hover:bg-indigo-700 focus:bg-indigo-700 hover:border-indigo-700 hover:text-white focus:text-white transition-colors duration-100" type="button">Insertion Sort</button></li>
-        <li class="mx-2"><button id="selectionSort" class="focus:outline-none border border-black w-40 my-2 px-2 py-1 text-base md:w-40 md:px-4 md:py-1 md:my-0 rounded-full lg:text-lg hover:bg-indigo-700 focus:bg-indigo-700 hover:border-indigo-700 hover:text-white focus:text-white transition-colors duration-100" type="button">Selection Sort</button></li>
         <li class="mx-2"><button id="bubbleSort" class="focus:outline-none border border-black w-40 my-2 px-2 py-1 text-base md:w-40 md:px-4 md:py-1 md:my-0 rounded-full lg:text-lg hover:bg-indigo-700 focus:bg-indigo-700 hover:border-indigo-700 hover:text-white focus:text-white transition-colors duration-100" type="button">Bubble Sort</button></li>
+        <li class="mx-2"><button id="selectionSort" class="focus:outline-none border border-black w-40 my-2 px-2 py-1 text-base md:w-40 md:px-4 md:py-1 md:my-0 rounded-full lg:text-lg hover:bg-indigo-700 focus:bg-indigo-700 hover:border-indigo-700 hover:text-white focus:text-white transition-colors duration-100" type="button">Selection Sort</button></li>
+        <li class="mx-2"><button id="insertionSort" class="focus:outline-none border border-black w-40 my-2 px-2 py-1 text-base md:w-40 md:px-4 md:py-1 md:my-0 rounded-full lg:text-lg hover:bg-indigo-700 focus:bg-indigo-700 hover:border-indigo-700 hover:text-white focus:text-white transition-colors duration-100" type="button">Insertion Sort</button></li>
+        <li class="mx-2"><button id="quickSort" class="focus:outline-none border border-black w-40 my-2 px-2 py-1 text-base md:w-40 md:px-4 md:py-1 md:my-0 rounded-full lg:text-lg hover:bg-indigo-700 focus:bg-indigo-700 hover:border-indigo-700 hover:text-white focus:text-white transition-colors duration-100" type="button">Quick Sort</button></li>
       </ul>
       <div id="more_options" class="cursor-pointer hidden md:block">
         <svg class="w-12 h-12 mr-6" viewBox="0 0 63 63" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -61,7 +61,7 @@
     </div>
     <div id="more_options_menu" class="flex items-center flex-wrap justify-center pb-6 mt-6 hidden">
       <label for="range_array_length">Array length:</label>
-      <input type="range" name="range_array_length" id="range_arrlen" min="5" max="100" value="100" class="mx-4">
+      <input type="range" name="range_array_length" id="range_arrlen" min="5" max="200" value="100" class="mx-4">
     </div>
   </nav>
   <main>
@@ -72,7 +72,7 @@
     <div class="mt-16">
       <div class="top flex justify-center">
         <button id="startBtn" class="px-6 py-2 mx-4 my-2 bg-blue-600 text-white text-lg rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 ring-blue-300 ring-offset-1">Start</button>
-        <button id="resetBtn" class="px-6 py-2 mx-4 my-2 bg-red-600 text-white text-lg rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 ring-red-300 ring-offset-1" >Pause</button>
+        <button id="placeholderBtn" class="px-6 py-2 mx-4 my-2 bg-red-600 text-white text-lg rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 ring-red-300 ring-offset-1" >Placeholder</button>
       </div>
       <div class="bottom flex justify-center mt-2">
         <button id="newArrBtn" class="px-6 py-2 mx-4 my-2 bg-indigo-600 text-white text-lg rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 ring-indigo-300 ring-offset-1">New Array</button>
