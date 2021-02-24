@@ -8,7 +8,7 @@ const newArrBtn = document.querySelector('#newArrBtn');
 const lenRange = document.querySelector('#range_arrlen');
 const canvas = document.querySelector('#canvas');
 let len = 30;
-let speed = 10;
+let speed = 20;
 let generatedArray = [];
 let generatedArrayDivs = [];
 generateArray(len);
@@ -42,11 +42,17 @@ function generateArray(len){
   }
 }
 
+
+
 lenRange.addEventListener('input', (e) => {
   len = e.target.value;
   reset();
 })
 
+
+quickSortBtn.addEventListener('click', () => {
+  quickSort(generatedArray, generatedArrayDivs);
+})
 
 insertionSortBtn.addEventListener('click', () => {
   insertionSort(generatedArray, generatedArrayDivs);
@@ -61,7 +67,7 @@ bubbleSortBtn.addEventListener('click', () => {
 })
 
 startBtn.addEventListener("click", () => {
-  
+  quickSort(generatedArray, 0, generatedArray.length, generatedArrayDivs)
 })
 
 pauseBtn.addEventListener('click', () => {
@@ -138,8 +144,6 @@ function selectionSort(arr, arrDivs) {
   return arr;
 }
 
-// now-------------------
-
 function insertionSort(arr, arrDivs) {
   let len = arr.length;
       for (let i = 1; i < len; i++) {
@@ -157,5 +161,43 @@ function insertionSort(arr, arrDivs) {
           }
           arr[j + 1] = current;
       }
+  return arr;
+}
+
+// now-------------------
+
+function partition(arr, start, end, arrDivs){
+  let pivot = arr[start];
+  let i = start;
+  let j = end;
+  while(i < j){
+    do{
+      i++;
+    } while(arr[i] <= pivot)
+    do{
+      j--
+    } while(arr[j] > pivot)
+    if (i < j){
+      let temp = arr[i];
+      arr[i] = arr[j];
+      arr[j] = temp;
+      swap(arrDivs[i], arrDivs[j]);
+    }
+  }
+  let temp = arr[start];
+  arr[start] = arr[j];
+  arr[j] = temp;
+  swap(arrDivs[start], arrDivs[j]);
+  return j
+}
+
+function quickSort(arr, start, end, arrDivs){
+  if (start < end){
+    let j = partition(arr, start, end, arrDivs);
+    quickSort(arr, start, j, arrDivs);
+    quickSort(arr, j+1, end, arrDivs);
+  }
+  updateColor(arrDivs[start], 'green');
+  updateColor(arrDivs[end], 'green');
   return arr;
 }
