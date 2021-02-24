@@ -21,6 +21,7 @@ function getRandomInt(max) {
 }
 
 function reset(){
+  update_delay = 0;
   let elements = document.querySelectorAll('.el');
   elements.forEach(element => {
     generatedArray.pop(element.offsetHeight);
