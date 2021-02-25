@@ -117,6 +117,7 @@ startBtn.addEventListener("click", () => {
       
     default:
       // add tailwindcss popup
+      enable_buttons();
       alert('No algorithm selected!');
   }
 })
