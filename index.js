@@ -1,3 +1,4 @@
+const algoButtons = document.querySelectorAll('.algoBtn');
 const quickSortBtn = document.querySelector('#quickSort');
 const insertionSortBtn = document.querySelector('#insertionSort');
 const selectionSortBtn = document.querySelector('#selectionSort');
@@ -6,6 +7,7 @@ const startBtn = document.querySelector('#startBtn');
 const placeholderBtn = document.querySelector('#placeholderBtn');
 const newArrBtn = document.querySelector('#newArrBtn');
 const lenRange = document.querySelector('#range_arrlen');
+const selectedSpeed = document.querySelector('#speed_selected');
 const canvas = document.querySelector('#canvas');
 
 let selectedAlgo = '';
@@ -31,6 +33,26 @@ function reset(){
   generateArray(len);
 }
 
+function disable_buttons(){
+  startBtn.classList.add('disabled-btn');
+  startBtn.disabled = true;
+  lenRange.disabled = true;
+  algoButtons.forEach(button => {
+    button.classList.add('disabled-btn');
+    button.disabled = true;
+  })
+}
+
+function enable_buttons(){
+  startBtn.classList.remove('disabled-btn');
+  startBtn.disabled = false;
+  lenRange.disabled = false;
+  algoButtons.forEach(button => {
+    button.classList.remove('disabled-btn');
+    button.disabled = false;
+  })
+}
+
 function generateArray(len){
   for (let i = 0; i < len; i++) {
     let div = document.createElement("div");
@@ -50,26 +72,32 @@ lenRange.addEventListener('input', (e) => {
 })
 
 bubbleSortBtn.addEventListener('click', () => {
-  selectedAlgo = '';
-  selectedAlgo += bubbleSortBtn.innerHTML;
+  selectedAlgo = bubbleSortBtn.innerHTML;
 })
 
 selectionSortBtn.addEventListener('click', () => {
-  selectedAlgo = '';
-  selectedAlgo += selectionSortBtn.innerHTML;
+  selectedAlgo = selectionSortBtn.innerHTML;
 })
 
 insertionSortBtn.addEventListener('click', () => {
-  selectedAlgo = '';
-  selectedAlgo += insertionSortBtn.innerHTML;
+  selectedAlgo = insertionSortBtn.innerHTML;
 })
 
 quickSortBtn.addEventListener('click', () => {
-  selectedAlgo = '';
-  selectedAlgo += quickSortBtn.innerHTML;
+  selectedAlgo = quickSortBtn.innerHTML;
+})
+
+// placeholderBtn.addEventListener('click', () => {
+  
+// })
+
+newArrBtn.addEventListener('click', () => {
+  reset();
+  enable_buttons();
 })
 
 startBtn.addEventListener("click", () => {
+  disable_buttons();
   switch(selectedAlgo){
     case "Bubble Sort":
       bubbleSort(generatedArray, generatedArrayDivs);
@@ -92,15 +120,6 @@ startBtn.addEventListener("click", () => {
       alert('No algorithm selected!');
   }
 })
-
-placeholderBtn.addEventListener('click', () => {
-  // 
-})
-
-newArrBtn.addEventListener('click', () => {
-  reset();
-})
-
 
 // SORTING ALGORITHMS
 function swap(div1, div2){
